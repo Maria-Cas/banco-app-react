@@ -18,9 +18,6 @@ function App() {
       acc => acc.username === user && acc.pin === Number(pin)
     );
 
-    console.log(currentAccount, 'currentAccount');
-    console.log(user, pin, 'user, pin')
-
     if (currentAccount) setAccount(currentAccount);
   };
 
@@ -28,7 +25,7 @@ function App() {
 
     <>
       <nav>
-        <Welcome />
+        <Welcome account={account}/>
         <img src="logo.png" alt="Logo" className="logo" />
         <Login onLogin={handleLogin} />
       </nav>
