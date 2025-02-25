@@ -33,14 +33,11 @@ function App() {
 {account && (
       <main className="app">
       {/* BALANCE */}
-      <Balance />
+      <Balance movements={account.movements} />
       {/* MOVEMENTS */}
-      <Movements />
-
+      <Movements movements={account.movements} />
       {/* SUMMARY */}
-      <Summary />
-
-      {/* OPERATION: TRANSFERS */}
+      <Summary movements={account.movements} />
       <div className="operation operation--transfer">
         <h2>Transfer money</h2>
         <form className="form form--transfer">

@@ -1,13 +1,14 @@
 import React from 'react';
 import './Movements.css';
 
-const Movements = () => {
-  const movements = [
-    { type: 'deposit', date: '3 days ago', value: '4,000€' },
-    { type: 'withdrawal', date: '24/01/2037', value: '-378€' },
-    { type: 'deposit', date: '12/01/2037', value: '1,500€' },
-    { type: 'withdrawal', date: '01/01/2037', value: '-200€' },
-  ];
+const Movements = ({ movements: rawMovements }) => {
+  const movements = rawMovements.map(movement => ({
+    value: movement,
+    type: movement < 0 ? 'withdrawal' : 'deposit',
+    date: '24/01/2037'
+  }))
+
+ 
 
   return (
     <div className="movements">

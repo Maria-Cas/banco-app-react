@@ -1,20 +1,29 @@
 import React from 'react';
 import './Summary.css';
 
-const Summary = () => {
+const Summary = ({ movements }) => {
   // Sample summary data
-  const totalIn = 5000; // Example total income
-  const totalOut = 378; // Example total expenses
-  const interest = 150; // Example interest earned
+  const totalIn = movements
+                    .filter(mov => mov >0)
+                    .reduce((acc, mov) => acc + mov, 0);
+
+  const totalOut = movements
+                        .filter(mov => mov < 0)
+                        .reduce((acc, mov) => acc + mov, 0);
+
+  const interest = totalIn * 0.5;
+
+  //totalInDisplay
+  // const totalInDisplay = `${totalIn.toFixed(2)}€`;
 
   return (
     <div className="summary">
       <p className="summary__label">In</p>
-      <p className="summary__value summary__value--in">{totalIn}€</p>
+      <p className="summary__value summary__value--in">{totalIn.toFixed(2)}€</p>
       <p className="summary__label">Out</p>
-      <p className="summary__value summary__value--out">{totalOut}€</p>
+      <p className="summary__value summary__value--out">{totalOut.toFixed(2)}€</p>
       <p className="summary__label">Interest</p>
-      <p className="summary__value summary__value--interest">{interest}€</p>
+      <p className="summary__value summary__value--interest">{interest.toFixed(2)}€</p>
       <button className="btn--sort">&downarrow; SORT</button>
     </div>
   );
